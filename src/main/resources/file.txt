@@ -1,0 +1,8 @@
+Mario,Rossi,Milan,via dante 7
+Fabio,Verdi,Rome,piazza repubblica 23
+Marvin,Mino,Tirana,pjeter budi
+Fabio,Rosso,Rome,piazza repubblica 23
+Mario,Gialo,Milan,piazza repubblica 23
+Fabio,Mino,Rome,piazza repubblica 23
+Fabio,Mino,Torino,piazza repubblica 23
+Fabio,Mino,Trieste,piazza repubblica 23
