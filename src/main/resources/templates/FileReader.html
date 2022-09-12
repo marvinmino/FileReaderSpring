@@ -29,10 +29,10 @@
                     </thead>
                     <tbody>
                         <tr th:each="person :  ${people}">
-                                <td th:text="${person.get_name()}"/>
-                                <td th:text="${person.get_surname()}"/>
-                                <td th:text="${person.get_city()}"/>
-                                <td th:text="${person.get_address()}"/>
+                                <td th:text="${person.getName()}"/>
+                                <td th:text="${person.getSurname()}"/>
+                                <td th:text="${person.getCity()}"/>
+                                <td th:text="${person.getAddress()}"/>
                         </tr>
                     </tbody>
                 </table>

@@ -1,64 +1,82 @@
 package com.example.demo.Models;
 
+import javax.persistence.*;
+
+@Entity
 public class Person {
-    String _name;
-    String _surname;
-    String _city;
-    String _address;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    private String name;
+    private String surname;
+    private String city;
+    private String address;
+
+    public Person() {
+    }
 
     public Person(String name, String surname, String city, String address) {
-        _name = name;
-        _surname = surname;
-        _city = city;
-        _address = address;
+        this.name = name;
+        this.surname = surname;
+        this.city = city;
+        this.address = address;
     }
 
     public Person(String[] data) {
-        _name = data[0];
-        _surname = data[1];
-        _city = data[2];
-        _address = data[3];
+        name = data[0];
+        surname = data[1];
+        city = data[2];
+        address = data[3];
     }
 
-    public String get_address() {
-        return _address;
+    public Long getId() {
+        return id;
     }
 
-    public void set_address(String _address) {
-        this._address = _address;
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getAddress() {
+        return address;
     }
 
-    public String get_city() {
-        return _city;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void set_city(String _city) {
-        this._city = _city;
+    public String getCity() {
+        return city;
     }
 
-    public String get_name() {
-        return _name;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void set_name(String _name) {
-        this._name = _name;
+    public String getName() {
+        return name;
     }
 
-    public String get_surname() {
-        return _surname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void set_surname(String _surname) {
-        this._surname = _surname;
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "_name='" + _name + '\'' +
-                ", _surname='" + _surname + '\'' +
-                ", _city='" + _city + '\'' +
-                ", _address='" + _address + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", city='" + city + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
