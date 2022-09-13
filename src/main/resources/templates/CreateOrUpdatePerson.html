@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spring Boot & Thymeleaf File Upload</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<section class="my-5">
+  <div class="container">
+
+    <div class="col-md-8 mx-auto">
+      <form th:action="@{${person != null ? '/update-person/'+person.getId(): '/save-person'}}" th:method="${ person != null ? 'put' : 'post'}" class="form">
+        <h2>Please insert person info below</h2>
+        <label for="name" class="label">Name *</label>
+        <input type="text" name="name" id="name" class="form-control" th:value="${person?.getName()}" required>
+        <label for="surname"  class="label">Surname *</label>
+        <input type="text" name="surname" id="surname" class="form-control" th:value="${person?.getSurname()}" required>
+        <label for="city"  class="label">City *</label>
+        <input type="text" name="city" id="city" class="form-control" th:value="${person?.getCity()}" required>
+        <label for="address"  class="label">Address *</label>
+        <input type="text" name="address" id="address" class="form-control" th:value="${person?.getAddress()}" required>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

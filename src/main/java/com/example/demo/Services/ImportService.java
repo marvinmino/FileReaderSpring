@@ -10,10 +10,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
 @Component
 public class ImportService {
     @Autowired
@@ -55,7 +53,19 @@ public class ImportService {
         model.addAttribute("city_count",cities.size());
         model.addAttribute("names_count",names.size());
     }
+
     public void addFlashAttribute(RedirectAttributes attributes,String message){
         attributes.addFlashAttribute("message", message);
+    }
+
+    public Person mapPersonResource(Map<String,String> requestParams){
+        Person person = new Person();
+
+        person.setName(requestParams.get("name"));
+        person.setSurname(requestParams.get("surname"));
+        person.setCity(requestParams.get("city"));
+        person.setAddress(requestParams.get("address"));
+
+        return person;
     }
 }

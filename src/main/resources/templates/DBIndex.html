@@ -13,6 +13,7 @@
         <h2>Database data</h2>
 
         <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+        <a th:href="@{/edit-or-store-person/}" class="btn btn-secondary" style="float:right">Create User</a>
         <table class="table table-dark">
           <thead>
           <th scope="col">
@@ -34,6 +35,9 @@
             <td th:text="${person.getSurname()}"/>
             <td th:text="${person.getCity()}"/>
             <td th:text="${person.getAddress()}"/>
+            <td>
+              <a th:href="@{/edit-or-store-person/{id}(id = ${person.getId()})}">Edit</a>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -42,6 +46,7 @@
     <p th:text="'Number of distinct names: ' + ${names_count}" class="alert alert-primary"></p>
 
     <p th:text="'Number of distinct cities: ' + ${city_count}" class="alert alert-primary"></p>
+
   </div>
 </section>
 
