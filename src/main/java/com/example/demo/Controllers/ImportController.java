@@ -1,11 +1,12 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Models.Person;
 import com.example.demo.Services.ImportService;
+import com.example.demo.Services.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,14 +25,22 @@ public class ImportController {
     private final String FILE_ALLOWED_EXTENSION = "txt";
 
     @Autowired
+    private ViewService viewService;
+
+    @Autowired
     private ImportService importService;
+
+    @GetMapping("/file-index")
+    public String fileIndex(Model model) {
+        return "FileIndex";
+    }
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes, Model model) throws FileNotFoundException {
         try {
             // check if file is empty
             if (file.isEmpty()) {
-                importService.addFlashAttribute(attributes,"Please select a file to upload.");
+                viewService.addFlashAttribute(attributes,"Please select a file to upload.");
                 return "redirect:/";
             }
 
@@ -43,7 +52,7 @@ public class ImportController {
             String extension = importService.getFileExtension(fileName);
 
             if (!extension.equals(FILE_ALLOWED_EXTENSION)) {
-                importService.addFlashAttribute(attributes,"File must be of type .txt");
+                viewService.addFlashAttribute(attributes,"File must be of type .txt");
                 return "redirect:/";
             }
 
@@ -57,7 +66,7 @@ public class ImportController {
             importService.generateViewModelForFileImport(model, path, fileName);
 
         } catch (Exception e){
-            importService.addFlashAttribute(attributes, "Something happened during the import");
+            viewService.addFlashAttribute(attributes, "Something happened during the import");
             return "redirect:/";
         }
 

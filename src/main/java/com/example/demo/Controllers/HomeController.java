@@ -14,10 +14,5 @@ public class HomeController {
     public String home(Model model) {
        return "Home";
     }
-
-    @GetMapping("/file-index")
-    public String fileIndex(Model model) {
-        return "FileIndex";
-    }
 }
 

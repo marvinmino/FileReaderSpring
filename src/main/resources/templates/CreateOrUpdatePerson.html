@@ -10,7 +10,7 @@
   <div class="container">
 
     <div class="col-md-8 mx-auto">
-      <form th:action="@{${person != null ? '/update-person/'+person.getId(): '/save-person'}}" th:method="${ person != null ? 'put' : 'post'}" class="form">
+      <form th:object="${person}" th:action="@{${person != null ? '/update-person/'+person.getId(): '/save-person'}}" th:method="${ person != null ? 'put' : 'post'}" class="form">
         <h2>Please insert person info below</h2>
         <label for="name" class="label">Name *</label>
         <input type="text" name="name" id="name" class="form-control" th:value="${person?.getName()}" required>

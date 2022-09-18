@@ -1,6 +1,7 @@
 package com.example.demo.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Person {
@@ -9,9 +10,13 @@ public class Person {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank
     private String name;
+    @NotBlank
     private String surname;
+    @NotBlank
     private String city;
+    @NotBlank
     private String address;
 
     public Person() {
