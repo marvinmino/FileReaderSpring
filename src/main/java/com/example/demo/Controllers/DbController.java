@@ -48,7 +48,7 @@ public class DbController {
     }
 
     @PostMapping("/update-person/{id}")
-    public String updatePerson(@PathVariable(value="id") Long id, @Valid @ModelAttribute Person person, Errors errors, RedirectAttributes attributes) {
+    public String updatePerson(@PathVariable(value="id") Long id, @Valid Person person, Errors errors, RedirectAttributes attributes) {
         try{
             if (null != errors && errors.getErrorCount() == 0) {
                 person.setId(id);
@@ -65,7 +65,7 @@ public class DbController {
     }
 
     @PostMapping("/save-person")
-    public String savePerson(@Valid @ModelAttribute Person person, Errors errors, RedirectAttributes attributes) {
+    public String savePerson(@Valid Person person, Errors errors, RedirectAttributes attributes) {
         try{
             if (null != errors && errors.getErrorCount() == 0) {
                 attributes.addAttribute("message", "Details saved successfully!!");

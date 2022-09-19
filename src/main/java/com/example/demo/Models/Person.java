@@ -1,9 +1,12 @@
 package com.example.demo.Models;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "citta")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,12 +14,16 @@ public class Person {
     private Long id;
 
     @NotBlank
+    @Column(name = "nome")
     private String name;
     @NotBlank
+    @Column(name = "cognome")
     private String surname;
     @NotBlank
+    @Column(name = "citta")
     private String city;
     @NotBlank
+    @Column(name = "indirizzo")
     private String address;
 
     public Person() {
