@@ -1,10 +1,12 @@
 package com.example.demo.Models;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Person {
+@Table(name = "PERSON_VIEW")
+public class ViewPerson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -19,21 +21,14 @@ public class Person {
     @NotBlank
     private String address;
 
-    public Person() {
+    public ViewPerson() {
     }
 
-    public Person(String name, String surname, String city, String address) {
+    public ViewPerson(String name, String surname, String city, String address) {
         this.name = name;
         this.surname = surname;
         this.city = city;
         this.address = address;
-    }
-
-    public Person(String[] data) {
-        name = data[0];
-        surname = data[1];
-        city = data[2];
-        address = data[3];
     }
 
     public Long getId() {

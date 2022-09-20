@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot & Thymeleaf File Upload</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2>Database data</h2>
+
+                <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                <table class="table table-dark">
+                    <thead>
+                    <th scope="col">
+                        First Name
+                    </th>
+                    <th scope="col">
+                        Last Name
+                    </th>
+                    <th scope="col">
+                        City
+                    </th>
+                    <th scope="col">
+                        Address
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="person :  ${people}">
+                        <td th:text="${person.getName()}"/>
+                        <td th:text="${person.getSurname()}"/>
+                        <td th:text="${person.getCity()}"/>
+                        <td th:text="${person.getAddress()}"/>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p th:text="'Number of distinct names: ' + ${names_count}" class="alert alert-primary"></p>
+
+        <p th:text="'Number of distinct cities: ' + ${city_count}" class="alert alert-primary"></p>
+
+    </div>
+</section>
+
+</body>
+</html>

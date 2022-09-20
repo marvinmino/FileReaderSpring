@@ -1,7 +1,9 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.Models.Person;
+import com.example.demo.Models.ViewPerson;
 import com.example.demo.Repositories.PersonRepository;
+import com.example.demo.Repositories.ViewPersonRepository;
 import com.example.demo.Services.PersonService;
 import com.example.demo.Services.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ import java.util.Optional;
 public class DbController {
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    ViewPersonRepository viewPersonRepository;
+
 
     @Autowired
     PersonService personService;
@@ -69,7 +75,7 @@ public class DbController {
         try{
             if (null != errors && errors.getErrorCount() == 0) {
                 attributes.addAttribute("message", "Details saved successfully!!");
-                personRepository.save(person);
+                personRepository.savePerson(person.getName(), person.getSurname(), person.getCity(), person.getAddress());
             } else{
                 attributes.addAttribute("message", "Please Fill the right datay!!");
             }
@@ -78,5 +84,14 @@ public class DbController {
         }
 
         return "redirect:/db-index";
+    }
+
+    @GetMapping("/view-index")
+    public String viewIndex(Model model) {
+        List<ViewPerson> people = (List<ViewPerson>) viewPersonRepository.findAll();
+        viewService.addCountsToViewModel(model, people);
+
+        model.addAttribute("people", people);
+        return "OldTable";
     }
 }
